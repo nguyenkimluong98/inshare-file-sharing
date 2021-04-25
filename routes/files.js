@@ -61,7 +61,7 @@ router.post("/send", async (req, res) => {
 	file.sender = emailFrom;
 	file.receiver = emailTo;
 
-	const response = await file.save();
+	// const response = await file.save();
 
 	const sendMail = require("../services/emailService");
 	sendMail({
@@ -76,6 +76,8 @@ router.post("/send", async (req, res) => {
 			expires: "24 hours",
 		}),
 	});
+
+	return res.send({ success: true });
 });
 
 module.exports = router;
